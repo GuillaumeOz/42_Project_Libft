@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/07/03 13:42:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/07/04 14:57:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdlib.h>
 # include <string.h>
 # define BUFF_SIZE 1024
+
+# define STDIN  0
+# define STDOUT 1
+# define STDERR 2
 
 typedef struct	s_list
 {
