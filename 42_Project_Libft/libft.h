@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/07/04 14:57:40 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/08/09 15:05:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# define BUFF_SIZE 1024
 
 # define STDIN  0
 # define STDOUT 1
 # define STDERR 2
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
+# define BINARY_BASE "01"
+# define OCTAL_BASE "01234567"
+# define DECIMAL_BASE "0123456789"
+# define HEX_LOWER_BASE "0123456789abcdef"
+# define HEX_UPPER_BASE "0123456789ABCDEF"
 
 typedef struct	s_list
 {
