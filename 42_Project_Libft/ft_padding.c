@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 21:03:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 18:19:26 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/09/13 17:25:12 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/09/16 10:22:35 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_padding(int size, char c)
 {
-	char *new_str;
+	char	*buf;
+	int		i;
 
-	if (s1 || s2)
+	buf = NULL;
+	if (size > 0)
 	{
-		if (!s2)
-			return (ft_strdup((char *)s1));
-		if (!s1)
-			return (ft_strdup((char *)s2));
-		if (!(new_str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + SENTINAL)))
+		if (!(buf = (char*)malloc(sizeof(char) * (size + SENTINAL))))
 			return (NULL);
-		return (ft_strcat(ft_strcat(new_str, s1), s2));
+		i = 0;
+		while (i < size)
+			buf[i++] = c;
+		buf[i] = '\0';
 	}
-	return (NULL);
+	return (buf);
 }

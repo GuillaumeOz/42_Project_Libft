@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:54:42 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/25 20:24:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/09/08 12:48:12 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_itoa(int nb)
 	long	n;
 
 	n = nb;
-	nb_len = ft_nblen(n);
+	nb_len = ft_intlen(n);
 	output = (char *)malloc((nb_len + 1) * sizeof(char));
 	if (output == NULL)
 		return (NULL);

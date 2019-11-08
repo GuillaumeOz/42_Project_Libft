@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 21:03:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 18:19:26 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/09/11 15:02:23 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/09/11 15:38:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strappend(const char *s1, const char *s2, int free_s1, int free_s2)
 {
-	char *new_str;
-
-	if (s1 || s2)
-	{
-		if (!s2)
-			return (ft_strdup((char *)s1));
-		if (!s1)
-			return (ft_strdup((char *)s2));
-		if (!(new_str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + SENTINAL)))
-			return (NULL);
-		return (ft_strcat(ft_strcat(new_str, s1), s2));
-	}
-	return (NULL);
+	return (ft_strjoinfre(s1, s2, free_s1, free_s2));
 }

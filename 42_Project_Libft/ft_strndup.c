@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 19:35:37 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/05/12 20:38:39 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/08/28 17:11:27 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/09/08 12:42:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *str, unsigned int start, size_t len)
+char	*ft_strndupfree(const char *src, size_t n, int free_src)
 {
-	char	*new_str;
+	char	*res;
+
+	res = ft_strndup(src, n);
+	if (free_src && src)
+		free((void *)src);
+	return (res);
+}
+
+char	*ft_strndup(const char *src, size_t n)
+{
+	char	*dst;
 	size_t	i;
 
-	if (str == NULL)
+	if (!(dst = (char*)malloc(sizeof(char) * (ft_strnlen(src, n) + 1))))
 		return (NULL);
-	if (len + start > ft_strlen(str))
-		return (NULL);
-	new_str = (char*)malloc((len + 1) * sizeof(char));
-	if (new_str == NULL)
-		return (NULL);
-	i = start;
-	while (i - start != len)
-	{
-		new_str[i - start] = str[i];
-		i++;
-	}
-	new_str[len] = '\0';
-	return (new_str);
+	i = -1;
+	while (++i < n)
+		dst[i] = src[i];
+	dst[i] = '\0';
+	return (dst);
 }

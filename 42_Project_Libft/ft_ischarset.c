@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nblen.c                                         :+:      :+:    :+:   */
+/*   ft_ischarset.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 19:58:11 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/22 20:06:44 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/08/26 16:02:49 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/08/26 16:21:21 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nblen(long nb)
+int	ft_ischarset(int c, const char *charset)
 {
-	size_t	nblen;
-
-	nblen = 0;
-	if (nb == 0)
-		return (1);
-	if (nb < 0)
+	while (*charset)
 	{
-		nb = -nb;
-		nblen++;
+		if (*charset == c)
+			return (1);
+		charset++;
 	}
-	while (nb != 0)
-	{
-		nb /= 10;
-		nblen++;
-	}
-	return (nblen);
+	return (0);
 }

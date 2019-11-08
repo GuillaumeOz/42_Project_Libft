@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:41:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/07/03 12:07:52 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:17:46 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*get_node(t_list **head, int fd)
+t_list			*ft_get_node(t_list **head, int fd)
 {
 	t_list *node;
 
@@ -27,7 +27,7 @@ static t_list	*get_node(t_list **head, int fd)
 	return (node);
 }
 
-static t_list	*get_buff(t_list *node, int fd, int *p_ret)
+t_list			*ft_get_buff(t_list *node, int fd, int *p_ret)
 {
 	char	buf[BUFF_SIZE + 1];
 	int		nb_bytes;
@@ -47,7 +47,7 @@ static t_list	*get_buff(t_list *node, int fd, int *p_ret)
 	return (node);
 }
 
-int				get_line(t_list *node, char **line)
+int				ft_get_line(t_list *node, char **line)
 {
 	size_t	line_len;
 	char	*tmp;
@@ -69,7 +69,7 @@ int				get_line(t_list *node, char **line)
 	return (line_len);
 }
 
-void			free_node(t_list **head, int fd)
+void			ft_free_node(t_list **head, int fd)
 {
 	t_list *node;
 	size_t position;
@@ -95,17 +95,17 @@ int				ft_get_next_line(int const fd, char **line)
 	if (fd < 0 || line == NULL || read(fd, buf, 0) < 0)
 		return (-1);
 	head = node;
-	if ((node = get_node(&head, fd)) == NULL)
+	if ((node = ft_get_node(&head, fd)) == NULL)
 		return (-1);
 	ret = 0;
-	node = get_buff(node, fd, &ret);
-	if ((ret = get_line(node, line)) == -1)
+	node = ft_get_buff(node, fd, &ret);
+	if ((ret = ft_get_line(node, line)) == -1)
 		return (-1);
 	to_free = node->content;
 	node->content = ft_strdup(node->content + ret);
 	free(to_free);
 	if (ret == 0)
-		free_node(&head, fd);
+		ft_free_node(&head, fd);
 	node = head;
 	return (ret ? 1 : 0);
 }

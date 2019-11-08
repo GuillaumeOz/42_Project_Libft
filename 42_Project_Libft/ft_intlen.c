@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 21:03:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 18:19:26 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/04/22 19:58:11 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/08/22 17:23:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_intlen(intmax_t n)
 {
-	char *new_str;
+	intmax_t	num;
+	size_t		length;
 
-	if (s1 || s2)
+	length = 1;
+	num = (n < 0) ? -n : n;
+	while (num >= 10)
 	{
-		if (!s2)
-			return (ft_strdup((char *)s1));
-		if (!s1)
-			return (ft_strdup((char *)s2));
-		if (!(new_str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + SENTINAL)))
-			return (NULL);
-		return (ft_strcat(ft_strcat(new_str, s1), s2));
+		num /= 10;
+		length++;
 	}
-	return (NULL);
+	return (length);
 }

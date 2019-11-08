@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_valid_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 21:03:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 18:19:26 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/09/16 11:57:43 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/09/16 13:29:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_valid_base(char *base_str)
 {
-	char *new_str;
+	short	i;
+	short	j;
+	short	count;
 
-	if (s1 || s2)
+	if (!base_str || !base_str[0] || !base_str[1])
+		return (0);
+	i = -1;
+	while (base_str[++i])
 	{
-		if (!s2)
-			return (ft_strdup((char *)s1));
-		if (!s1)
-			return (ft_strdup((char *)s2));
-		if (!(new_str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + SENTINAL)))
-			return (NULL);
-		return (ft_strcat(ft_strcat(new_str, s1), s2));
+		count = 0;
+		if (!ISPRINT(base_str[i]))
+			return (0);
+		if (base_str[i] == '+' || base_str[i] == '-')
+			return (0);
+		j = -1;
+		while (base_str[++j])
+			if (base_str[j] == base_str[i])
+				count++;
+		if (count > 1)
+			return (0);
 	}
-	return (NULL);
+	return (1);
 }

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 21:03:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 18:19:26 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/04/17 19:35:37 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/08 18:16:02 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_substr(char const *str, unsigned int start, size_t len)
 {
-	char *new_str;
+	char	*new_str;
+	size_t	i;
 
-	if (s1 || s2)
+	if (str == NULL)
+		return (NULL);
+	if (len + start > ft_strlen(str))
+		return (NULL);
+	if (!(new_str = (char*)malloc(sizeof(char) * (len + SENTINAL))))
+		return (NULL);
+	i = start;
+	while (i - start != len)
 	{
-		if (!s2)
-			return (ft_strdup((char *)s1));
-		if (!s1)
-			return (ft_strdup((char *)s2));
-		if (!(new_str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + SENTINAL)))
-			return (NULL);
-		return (ft_strcat(ft_strcat(new_str, s1), s2));
+		new_str[i - start] = str[i];
+		i++;
 	}
-	return (NULL);
+	new_str[len] = '\0';
+	return (new_str);
 }
