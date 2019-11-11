@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/08 11:36:13 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/11 20:39:14 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ SOURCES =	ft_atoi.c\
 			ft_strnew.c\
 			ft_strnstr.c\
 			ft_strrchr.c\
-			ft_strsplit.c\
+			ft_split.c\
 			ft_strsplit_list.c\
 			ft_strstr.c\
 			ft_substr.c\
@@ -109,7 +109,6 @@ SOURCES =	ft_atoi.c\
 			ft_toupper.c\
 			ft_strrev.c\
 			ft_strpbrk.c\
-			ft_strsplit_list.c\
 			ft_lstfold.c\
 			ft_strcspn.c\
 			ft_lstdelnode.c\

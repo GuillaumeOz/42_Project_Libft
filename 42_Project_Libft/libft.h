@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/08 11:36:14 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:39:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
-//# include <string.h> forbidden for printf project
-//# include "stdint_42.h" remove for libft project
+# include <stdbool.h>
 
 # define BUFF_SIZE 10
 
@@ -93,11 +92,12 @@ char			*ft_strappend(const char *s1, const char *s2,
 char			*ft_strprepend(const char *s1, const char *s2,
 				int free_s1, int free_s2);
 
-char			*ft_strtrim(char const *s);
-char			**ft_strsplit(char const *s, char c);
+int				ft_count_charset(char const *s1, char const *set);
+char			*ft_strtrim(char const *s1, char const *set);
+char			**ft_split(char const *s, char c);
 
 int				ft_valid_base(char *base_str);
-size_t			ft_uintmaxlen_base(uintmax_t n , unsigned int base);
+size_t			ft_uintmaxlen_base(uintmax_t n, unsigned int base);
 char			*ft_itoa(int n);
 char			*ft_utoa_base(uintmax_t n, char *base, int precision);
 
@@ -106,8 +106,8 @@ void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
 void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
+void			ft_putstr_fd(char *s, int fd);
+void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
