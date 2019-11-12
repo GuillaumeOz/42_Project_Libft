@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpush.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 15:52:18 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/12 11:45:56 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/11/12 13:03:52 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/12 13:19:26 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstpush(t_list **head, void *content, size_t content_size)
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*node;
+	int count;
 
-	node = ft_lstnew(content);
-	if (node)
+	count = 0;
+	if (!lst)
+		return (count);
+	while (lst)
 	{
-		node->next = *head;
-		node->content_size = content_size;
-		*head = node;
+		count++;
+		lst = lst->next;
 	}
-	return (node);
+	return (count);
 }

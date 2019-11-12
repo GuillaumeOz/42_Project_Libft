@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpush.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 15:52:18 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/12 11:45:56 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/11/12 11:50:13 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/12 12:51:29 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstpush(t_list **head, void *content, size_t content_size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_list	*node;
+	void	*s;
 
-	node = ft_lstnew(content);
-	if (node)
-	{
-		node->next = *head;
-		node->content_size = content_size;
-		*head = node;
-	}
-	return (node);
+	if (!(s = (void *)malloc(count * size)))
+		return (NULL);
+	ft_bzero(s, count * size);
+	return (s);
 }

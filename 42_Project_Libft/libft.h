@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/11 20:39:09 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:13:48 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void			*ft_memmove(void *dest, const void *src, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
+void			*ft_calloc(size_t count, size_t size);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
@@ -110,10 +111,12 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
-t_list			*ft_lstnew(void const *content, size_t content_size);
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+t_list			*ft_lstnew(void *content);
+void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstadd(t_list **alst, t_list *lnew);
+void			ft_lstadd_front(t_list **alst, t_list *lnew);
+void			ft_lstadd_back(t_list **alst, t_list *new);
+t_list			*ft_lstlast(t_list *lst);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
@@ -128,7 +131,7 @@ t_list			**ft_strsplit_list(char const *s, char c);
 t_list			*ft_lstfold(t_list *lst);
 size_t			ft_strcspn(const char *s, const char *reject);
 void			ft_lstdelnode(t_list **head, size_t position);
-t_list			*ft_lstpush(t_list **head, void const *d, size_t d_size);
+t_list			*ft_lstpush(t_list **head, void *d, size_t d_size);
 
 t_list			*ft_get_node(t_list **head, int fd);
 t_list			*ft_get_buff(t_list *node, int fd, int *p_ret);

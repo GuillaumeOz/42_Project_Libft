@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/11 20:39:14 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/12 14:11:44 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,16 @@ SOURCES =	ft_atoi.c\
 			ft_isdigit.c\
 			ft_isprint.c\
 			ft_itoa.c\
-			ft_lstadd.c\
+			ft_lstadd_front_bonus.c\
+			ft_lstadd_back_bonus.c\
+			ft_lstnew_bonus.c\
+			ft_lstsize_bonus.c\
+			ft_lstlast_bonus.c\
+			ft_lstdelone_bonus.c\
 			ft_lstdel.c\
-			ft_lstdelone.c\
 			ft_lstfold.c\
 			ft_lstiter.c\
 			ft_lstmap.c\
-			ft_lstnew.c\
 			ft_memalloc.c\
 			ft_memccpy.c\
 			ft_memchr.c\
@@ -68,6 +71,7 @@ SOURCES =	ft_atoi.c\
 			ft_memdel.c\
 			ft_memmove.c\
 			ft_memset.c\
+			ft_calloc.c\
 			ft_intlen.c\
 			ft_putchar.c\
 			ft_putchar_fd.c\
