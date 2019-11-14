@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/12 14:11:44 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/14 19:21:15 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SOURCES =	ft_atoi.c\
 			ft_lstsize_bonus.c\
 			ft_lstlast_bonus.c\
 			ft_lstdelone_bonus.c\
-			ft_lstdel.c\
+			ft_lstclear_bonus.c\
 			ft_lstfold.c\
 			ft_lstiter.c\
 			ft_lstmap.c\
