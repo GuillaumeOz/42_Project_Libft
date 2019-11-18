@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfold.c                                       :+:      :+:    :+:   */
+/*   ft_gnl_lstpush.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 20:57:15 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 13:39:19 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/05/10 15:52:18 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/18 14:46:01 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list			*ft_lstfold(t_list *lst)
+t_gnl	*ft_gnl_lstpush(t_gnl **head, void *content, size_t fd)
 {
-	t_list	*result;
+	t_gnl	*node;
 
-	if (!(result = (t_list *)malloc(sizeof(t_list))))
+	if (!(node = (t_gnl *)malloc(sizeof(t_gnl))))
 		return (NULL);
-	if (lst != NULL)
+	node->content = content;
+	if (node)
 	{
-		result->content = lst->content;
-		lst = lst->next;
-		while (lst != NULL)
-		{
-			result->content = ft_strjoin(result->content, lst->content);
-			lst = lst->next;
-		}
-		return (result);
+		node->next = *head;
+		node->file_descriptor = fd;
+		*head = node;
 	}
-	return (result);
+	return (node);
 }

@@ -6,28 +6,28 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:41:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/13 18:27:50 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:34:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list			*ft_get_node(t_list **head, int fd)
+t_gnl			*ft_get_node(t_gnl **head, int fd)
 {
-	t_list *node;
+	t_gnl *node;
 
 	node = *head;
 	while (node)
 	{
-		if (fd == (int)node->content_size)
+		if (fd == (int)node->file_descriptor)
 			return (node);
 		node = node->next;
 	}
-	node = ft_lstpush(head, "", fd);
+	node = ft_gnl_lstpush(head, "", fd);
 	return (node);
 }
 
-t_list			*ft_get_buff(t_list *node, int fd, int *p_ret)
+t_gnl			*ft_get_buff(t_gnl *node, int fd, int *p_ret)
 {
 	char	buf[BUFF_SIZE + 1];
 	int		nb_bytes;
@@ -47,7 +47,7 @@ t_list			*ft_get_buff(t_list *node, int fd, int *p_ret)
 	return (node);
 }
 
-int				ft_get_line(t_list *node, char **line)
+int				ft_get_line(t_gnl *node, char **line)
 {
 	size_t	line_len;
 	char	*tmp;
@@ -57,7 +57,7 @@ int				ft_get_line(t_list *node, char **line)
 	while (((char *)node->content)[line_len]
 	&& ((char *)node->content)[line_len] != '\n')
 		line_len++;
-	if (!(tmp = (char *)malloc(sizeof(char) * (line_len + 1))))
+	if (!(tmp = (char *)malloc(sizeof(char) * (line_len + SENTINAL))))
 		return (-1);
 	i = -1;
 	while (((char *)(node->content))[++i] && i < line_len)
@@ -69,25 +69,25 @@ int				ft_get_line(t_list *node, char **line)
 	return (line_len);
 }
 
-void			ft_free_node(t_list **head, int fd)
+void			ft_free_node(t_gnl **head, int fd)
 {
-	t_list *node;
-	size_t position;
+	t_gnl	*node;
+	size_t	position;
 
 	node = *head;
 	position = 0;
-	while (node && (int)node->content_size != fd)
+	while (node && (int)node->file_descriptor != fd)
 	{
 		node = node->next;
 		position++;
 	}
-	ft_lstdelnode(head, position);
+	ft_gnl_lstdel(head, position);
 }
 
 int				ft_get_next_line(int const fd, char **line)
 {
-	static t_list	*node;
-	t_list			*head;
+	static t_gnl	*node;
+	t_gnl			*head;
 	char			*to_free;
 	char			buf[1];
 	int				ret;

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfold.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 20:57:15 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 13:39:19 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/04/22 17:16:43 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/18 12:57:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list			*ft_lstfold(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*result;
+	t_list *head;
+	t_list *node;
 
-	if (!(result = (t_list *)malloc(sizeof(t_list))))
+	if (!lst || !f || !del)
 		return (NULL);
-	if (lst != NULL)
+	if (!(node = ft_lstnew(f(lst->content))))
+		return (NULL);
+	head = node;
+	while (lst->next)
 	{
-		result->content = lst->content;
 		lst = lst->next;
-		while (lst != NULL)
-		{
-			result->content = ft_strjoin(result->content, lst->content);
-			lst = lst->next;
-		}
-		return (result);
+		if (!(node->next = ft_lstnew(f(lst->content))))
+			ft_lstclear(&head, del);
+		node = node->next;
 	}
-	return (result);
+	return (head);
 }

@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/14 19:21:15 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/18 14:47:23 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ NAME        =   libft.a
 
 # — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
-OBJECTS     =   $(SOURCES:.c=.o)
+OBJECTS			=   $(SOURCES:.c=.o)
+BONUSOBJECTS	=	$(BONUS:.c=.o)
 
 # — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
@@ -53,16 +54,7 @@ SOURCES =	ft_atoi.c\
 			ft_isdigit.c\
 			ft_isprint.c\
 			ft_itoa.c\
-			ft_lstadd_front_bonus.c\
-			ft_lstadd_back_bonus.c\
-			ft_lstnew_bonus.c\
-			ft_lstsize_bonus.c\
-			ft_lstlast_bonus.c\
-			ft_lstdelone_bonus.c\
-			ft_lstclear_bonus.c\
 			ft_lstfold.c\
-			ft_lstiter.c\
-			ft_lstmap.c\
 			ft_memalloc.c\
 			ft_memccpy.c\
 			ft_memchr.c\
@@ -115,8 +107,8 @@ SOURCES =	ft_atoi.c\
 			ft_strpbrk.c\
 			ft_lstfold.c\
 			ft_strcspn.c\
-			ft_lstdelnode.c\
-			ft_lstpush.c\
+			ft_gnl_lstdel.c\
+			ft_gnl_lstpush.c\
 			ft_get_next_line.c\
 			ft_ischarset.c\
 			ft_strndup.c\
@@ -128,13 +120,28 @@ SOURCES =	ft_atoi.c\
 			ft_utoa_base.c\
 			ft_valid_base.c\
 			ft_uintmaxlen_base.c\
+
+BONUS = 	ft_lstadd_front_bonus.c\
+			ft_lstadd_back_bonus.c\
+			ft_lstnew_bonus.c\
+			ft_lstsize_bonus.c\
+			ft_lstlast_bonus.c\
+			ft_lstdelone_bonus.c\
+			ft_lstclear_bonus.c\
+			ft_lstiter_bonus.c\
+			ft_lstmap_bonus.c\
 # Main — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@ar -rcs $(NAME) $(OBJECTS)
-	@echo && echo $(GREEN) "[√]     [Library Successfully Compiled!]"
+	@echo && echo $(GREEN) "[√]     [Basic Library Successfully Compiled!]"
+	@echo $(WHITE)
+
+bonus: fclean $(OBJECTS) $(BONUSOBJECTS)
+	@ar -rcs $(NAME) $(OBJECTS) $(BONUSOBJECTS)
+	@echo && echo $(GREEN) "[√]     [Basic && Bonus Library Successfully Compiled!]"
 	@echo $(WHITE)
 
 %.o: %.c $(HEADERS)

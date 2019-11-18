@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 20:56:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/29 21:10:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/18 13:41:03 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list		*ft_malloc_and_get_word_list(t_list *alist, const char *s,
+static t_list		*malloc_and_get_word_list(t_list *alist, const char *s,
 					int c, size_t len)
 {
 	char	*word;
@@ -27,7 +27,6 @@ static t_list		*ft_malloc_and_get_word_list(t_list *alist, const char *s,
 		word[i] = s[i];
 	word[i] = '\0';
 	alist->content = word;
-	(*alist).content_size = i;
 	return (alist);
 }
 
@@ -50,7 +49,7 @@ t_list				**ft_strsplit_list(char const *s, char c)
 		if (s[i] != c)
 		{
 			len = ft_seglen(s, i, c);
-			alist[k] = ft_malloc_and_get_word_list(*alist, s + i, c, len);
+			alist[k] = malloc_and_get_word_list(*alist, s + i, c, len);
 			i += len - 1;
 			k++;
 		}

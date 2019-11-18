@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/14 19:21:19 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:47:22 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,15 @@
 typedef struct	s_list
 {
 	void			*content;
-	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_gnl
+{
+	void			*content;
+	size_t			file_descriptor;
+	struct s_gnl	*next;
+}				t_gnl;
 
 size_t			ft_strlen(const char *s);
 int				ft_strcmp(const char *s1, const char *s2);
@@ -117,8 +123,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstadd_front(t_list **alst, t_list *lnew);
 void			ft_lstadd_back(t_list **alst, t_list *new);
 t_list			*ft_lstlast(t_list *lst);
-void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+				void (*del)(void *));
 
 size_t			ft_intlen(intmax_t nb);
 size_t			ft_seglen(const char *s, size_t start, int c);
@@ -130,13 +137,13 @@ char			*ft_strpbrk (const char *s, const char *accept);
 t_list			**ft_strsplit_list(char const *s, char c);
 t_list			*ft_lstfold(t_list *lst);
 size_t			ft_strcspn(const char *s, const char *reject);
-void			ft_lstdelnode(t_list **head, size_t position);
-t_list			*ft_lstpush(t_list **head, void *d, size_t d_size);
 
-t_list			*ft_get_node(t_list **head, int fd);
-t_list			*ft_get_buff(t_list *node, int fd, int *p_ret);
-int				ft_get_line(t_list *node, char **line);
-void			ft_free_node(t_list **head, int fd);
+t_gnl			*ft_gnl_lstpush(t_gnl **head, void *d, size_t d_size);
+void			ft_gnl_lstdel(t_gnl **head, size_t position);
+t_gnl			*ft_get_node(t_gnl **head, int fd);
+t_gnl			*ft_get_buff(t_gnl *node, int fd, int *p_ret);
+int				ft_get_line(t_gnl *node, char **line);
+void			ft_free_node(t_gnl **head, int fd);
 int				ft_get_next_line(const int fd, char **line);
 
 int				ft_ischarset(int c, const char *separators);
