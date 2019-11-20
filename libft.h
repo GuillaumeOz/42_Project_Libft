@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 17:36:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:03:42 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,6 @@ size_t			ft_strcspn(const char *s, const char *reject);
 
 t_gnl			*ft_gnl_lstpush(t_gnl **head, void *d, size_t d_size);
 void			ft_gnl_lstdel(t_gnl **head, size_t position);
-t_gnl			*ft_get_node(t_gnl **head, int fd);
-t_gnl			*ft_get_buff(t_gnl *node, int fd, int *p_ret);
-int				ft_get_line(t_gnl *node, char **line);
-void			ft_free_node(t_gnl **head, int fd);
 int				ft_get_next_line(const int fd, char **line);
 
 int				ft_ischarset(int c, const char *separators);

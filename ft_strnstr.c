@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 11:03:47 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/22 20:09:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:07:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strcmp_strnstr(const char *s1, const char *s2)
+static int	ft_strnstr_cmp(const char *s1, const char *s2)
 {
 	int i;
 
@@ -38,7 +38,7 @@ char		*ft_strnstr(const char *src, const char *word, size_t n)
 	{
 		if (*src == *word)
 		{
-			result = ft_strcmp_strnstr(src, word);
+			result = ft_strnstr_cmp(src, word);
 			if (result)
 				return ((char*)src);
 		}

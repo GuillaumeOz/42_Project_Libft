@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 16:48:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 12:57:20 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:24:19 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		return ;
 	while (lst)
 	{
-		f(lst);
+		f((void *)lst->content);
 		lst = lst->next;
 	}
 	return ;

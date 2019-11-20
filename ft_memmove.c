@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:55:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/12 11:34:53 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 12:38:09 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	unsigned char	*dstc;
 	size_t			i;
 
+	if (n == 0)
+		return (dst);
+	if (!dst && !src)
+		return (NULL);
 	i = 0;
 	srcc = (unsigned char *)src;
 	dstc = (unsigned char *)dst;

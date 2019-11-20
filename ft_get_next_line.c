@@ -6,13 +6,13 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 15:41:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 14:34:56 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:43:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_gnl			*ft_get_node(t_gnl **head, int fd)
+static t_gnl	*ft_get_node(t_gnl **head, int fd)
 {
 	t_gnl *node;
 
@@ -27,7 +27,7 @@ t_gnl			*ft_get_node(t_gnl **head, int fd)
 	return (node);
 }
 
-t_gnl			*ft_get_buff(t_gnl *node, int fd, int *p_ret)
+static t_gnl	*ft_get_buff(t_gnl *node, int fd, int *p_ret)
 {
 	char	buf[BUFF_SIZE + 1];
 	int		nb_bytes;
@@ -47,7 +47,7 @@ t_gnl			*ft_get_buff(t_gnl *node, int fd, int *p_ret)
 	return (node);
 }
 
-int				ft_get_line(t_gnl *node, char **line)
+static int		ft_get_line(t_gnl *node, char **line)
 {
 	size_t	line_len;
 	char	*tmp;
@@ -69,7 +69,7 @@ int				ft_get_line(t_gnl *node, char **line)
 	return (line_len);
 }
 
-void			ft_free_node(t_gnl **head, int fd)
+static void		ft_free_node(t_gnl **head, int fd)
 {
 	t_gnl	*node;
 	size_t	position;

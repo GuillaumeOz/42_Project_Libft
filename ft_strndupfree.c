@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_strndupfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 12:34:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 17:20:17 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/11/20 17:51:27 by gozsertt          #+#    #+#             */
+/*   Updated: 2019/11/20 18:03:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+char	*ft_strndupfree(const char *src, size_t n, int free_src)
 {
-	t_list *tmp;
+	char	*res;
 
-	if (!lst || !del)
-		return ;
-	tmp = (*lst);
-	while (tmp)
-	{
-		tmp = tmp->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
-	}
-	return ;
+	res = ft_strndup(src, n);
+	if (free_src && src)
+		free((void *)src);
+	return (res);
 }

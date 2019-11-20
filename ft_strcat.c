@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:25:01 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/07/04 15:23:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:21:05 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ char	*ft_strcat(char *s1, const char *s2)
 	size_t	i;
 	size_t	j;
 
-	if (s2)
-	{
-		i = ft_strlen(s1);
-		j = 0;
-		while (s2[j])
-			s1[i++] = s2[j++];
-		s1[i] = '\0';
-	}
+	i = ft_strlen(s1);
+	j = 0;
+	while (s2[j])
+		s1[i++] = s2[j++];
+	s1[i] = '\0';
 	return (s1);
 }

@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/18 20:09:02 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/20 18:17:36 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SOURCES =	ft_atoi.c\
 			ft_striteri.c\
 			ft_strjoin.c\
 			ft_strlcat.c\
+			ft_strlcpy.c\
 			ft_strlen.c\
 			ft_strmap.c\
 			ft_strmapi.c\
@@ -111,6 +112,7 @@ SOURCES =	ft_atoi.c\
 			ft_gnl_lstpush.c\
 			ft_get_next_line.c\
 			ft_ischarset.c\
+			ft_strndupfree.c\
 			ft_strndup.c\
 			ft_strnlen.c\
 			ft_strjoinfre.c\
@@ -134,14 +136,14 @@ BONUS = 	ft_lstadd_front_bonus.c\
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) bonus
+$(NAME): $(OBJECTS)
 	@ar -rcs $(NAME) $(OBJECTS)
 	@echo && echo $(GREEN) "[√]     [Basic Library Successfully Compiled!]"
 	@echo $(WHITE)
 
-bonus: fclean $(BONUSOBJECTS)
+bonus: $(BONUSOBJECTS)
 	@ar -rcs $(NAME) $(BONUSOBJECTS)
-	@echo && echo $(GREEN) "[√]     [Basic && Bonus Library Successfully Compiled!]"
+	@echo && echo $(GREEN) "[√]     [Bonus Library Successfully Compiled!]"
 	@echo $(WHITE)
 
 %.o: %.c $(HEADERS)
@@ -158,7 +160,10 @@ clean:
 fclean: clean
 	@$(DEL) $(NAME)
 
-re: fclean all
+re: fclean all bonus
+
+#bonus:
+#	@make re
 
 # Text Colorization — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
