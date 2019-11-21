@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/20 18:17:36 by gozsertt         ###   ########.fr        #
+#    Updated: 2019/11/21 17:10:43 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,9 +162,6 @@ fclean: clean
 
 re: fclean all bonus
 
-#bonus:
-#	@make re
-
 # Text Colorization — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
 GREEN = "\033[1;32m"
@@ -172,4 +169,4 @@ WHITE = "\033[1;37m"
 
 # — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
 
-.PHONY: all clean fclean re nc nh na
+.PHONY: all bonus clean fclean re
