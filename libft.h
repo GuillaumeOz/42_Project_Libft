@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 15:28:26 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 18:03:42 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:04:52 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char			*ft_strchr(const char *src, int c);
 char			*ft_strrchr(const char *src, int c);
 char			*ft_strstr(const char *src, const char *word);
 char			*ft_strnstr(const char *src, const char *word, size_t n);
-int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 void			*ft_memalloc(size_t size);

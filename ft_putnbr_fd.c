@@ -6,18 +6,18 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 18:15:37 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/04/20 19:18:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2019/11/21 16:00:59 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	long i;
 
-	i = nb;
-	if (nb < 0)
+	i = n;
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		i = i * (-1);
