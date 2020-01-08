@@ -6,167 +6,96 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2019/11/21 17:10:43 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/08 13:22:52 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+NAME		= libft.a
 
-CC          =   gcc
-CFLAGS      =   -Wall -Wextra -Werror -g #$(DEBUG_FLAGS)
+CC =		gcc
 
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+SRC_DIR = 	$(shell find srcs -type d)
+INC_DIR = 	$(shell find includes -type d)
+LIB_DIR =
+OBJ_DIR = 	obj
 
-DEBUG_FLAGS =   -O0 -g                                                      \
-                                                                            \
-                -fsanitize=address                                          \
-                -fsanitize=undefined                                        \
-                -fsanitize=bounds                                           \
-                -fsanitize=nullability-arg                                  \
-                -fsanitize=nullability-return                               \
-                -fsanitize=nullability-assign                               \
-                -fsanitize=undefined                                        \
-                -fsanitize-address-use-after-scope                          \
-                # -fsanitize=integer                                        \
-                # -fsanitize=object-size                                    \
+vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+# # List de toute les library a linker au projet (le nom - le lib et - le .a)
 
-NAME        =   libft.a
+SRC = $(foreach dir, $(SRC_DIR), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
 
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+OBJ2 = $(OBJ1:%.m=%.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
-OBJECTS			=   $(SOURCES:.c=.o)
-BONUSOBJECTS	=	$(BONUS:.c=.o)
+#Compilation flag
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir))
 
-HEADERS     =   libft.h                                                       \
+LFLAGS = $(foreach dir, $(LIB_DIR), -L $(dir) ) $(foreach lib, $(LIB), -l $(lib) ) $(foreach framework, $(FRAMEWORK), -framework $(framework) )
 
+# Colors
 
-SOURCES =	ft_atoi.c\
-			ft_bzero.c\
-			ft_count_elems.c\
-			ft_is_white_space.c\
-			ft_isalnum.c\
-			ft_isalpha.c\
-			ft_isascii.c\
-			ft_isdigit.c\
-			ft_isprint.c\
-			ft_itoa.c\
-			ft_lstfold.c\
-			ft_memalloc.c\
-			ft_memccpy.c\
-			ft_memchr.c\
-			ft_memcmp.c\
-			ft_memcpy.c\
-			ft_memdel.c\
-			ft_memmove.c\
-			ft_memset.c\
-			ft_calloc.c\
-			ft_intlen.c\
-			ft_putchar.c\
-			ft_putchar_fd.c\
-			ft_putendl.c\
-			ft_putendl_fd.c\
-			ft_putnbr.c\
-			ft_putnbr_fd.c\
-			ft_putstr.c\
-			ft_putstr_fd.c\
-			ft_seglen.c\
-			ft_strcat.c\
-			ft_strchr.c\
-			ft_strclr.c\
-			ft_strcmp.c\
-			ft_strcpy.c\
-			ft_strdel.c\
-			ft_strdup.c\
-			ft_strequ.c\
-			ft_striter.c\
-			ft_striteri.c\
-			ft_strjoin.c\
-			ft_strlcat.c\
-			ft_strlcpy.c\
-			ft_strlen.c\
-			ft_strmap.c\
-			ft_strmapi.c\
-			ft_strncat.c\
-			ft_strncmp.c\
-			ft_strncpy.c\
-			ft_strnequ.c\
-			ft_strnew.c\
-			ft_strnstr.c\
-			ft_strrchr.c\
-			ft_split.c\
-			ft_strsplit_list.c\
-			ft_strstr.c\
-			ft_substr.c\
-			ft_strtrim.c\
-			ft_tolower.c\
-			ft_toupper.c\
-			ft_strrev.c\
-			ft_strpbrk.c\
-			ft_lstfold.c\
-			ft_strcspn.c\
-			ft_gnl_lstdel.c\
-			ft_gnl_lstpush.c\
-			ft_get_next_line.c\
-			ft_ischarset.c\
-			ft_strndupfree.c\
-			ft_strndup.c\
-			ft_strnlen.c\
-			ft_strjoinfre.c\
-			ft_strprepend.c\
-			ft_strappend.c\
-			ft_padding.c\
-			ft_utoa_base.c\
-			ft_valid_base.c\
-			ft_uintmaxlen_base.c\
+_GREY=	$'\x1b[30m
+_RED=	$'\x1b[31m
+_GREEN=	$'\x1b[32m
+_YELLOW=$'\x1b[33m
+_BLUE=	$'\x1b[34m
+_PURPLE=$'\x1b[35m
+_CYAN=	$'\x1b[36m
+_WHITE=	$'\x1b[37m
 
-BONUS = 	ft_lstadd_front_bonus.c\
-			ft_lstadd_back_bonus.c\
-			ft_lstnew_bonus.c\
-			ft_lstsize_bonus.c\
-			ft_lstlast_bonus.c\
-			ft_lstdelone_bonus.c\
-			ft_lstclear_bonus.c\
-			ft_lstiter_bonus.c\
-			ft_lstmap_bonus.c\
-# Main — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+all:
+				@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"
+				@make $(NAME)
 
-all: $(NAME)
+show:
+				@echo "$(_BLUE)SRC :\n$(_YELLOW)$(SRC)$(_WHITE)"
+				@echo "$(_BLUE)OBJ :\n$(_YELLOW)$(OBJ)$(_WHITE)"
+				@echo "$(_BLUE)CFLAGS :\n$(_YELLOW)$(CFLAGS)$(_WHITE)"
+				@echo "$(_BLUE)IFLAGS :\n$(_YELLOW)$(IFLAGS)$(_WHITE)"
+				@echo "$(_BLUE)LFLAGS :\n$(_YELLOW)$(LFLAGS)$(_WHITE)"
 
-$(NAME): $(OBJECTS)
-	@ar -rcs $(NAME) $(OBJECTS)
-	@echo && echo $(GREEN) "[√]     [Basic Library Successfully Compiled!]"
-	@echo $(WHITE)
+$(OBJ_DIR)/%.o : %.c
+				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+				@mkdir -p $(OBJ_DIR)
+				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+				@echo "$(_GREEN)DONE$(_WHITE)"
 
-bonus: $(BONUSOBJECTS)
-	@ar -rcs $(NAME) $(BONUSOBJECTS)
-	@echo && echo $(GREEN) "[√]     [Bonus Library Successfully Compiled!]"
-	@echo $(WHITE)
+$(OBJ_DIR)/%.o : %.m
+				@echo "Compiling $(_YELLOW)$@$(_WHITE) ... \c"
+				@mkdir -p $(OBJ_DIR)
+				@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+				@echo "$(_GREEN)DONE$(_WHITE)"
 
-%.o: %.c $(HEADERS)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiling => " $<
+$(NAME): 		$(OBJ) Makefile
+				@echo "-----\nCreating library $(_YELLOW)$@$(_WHITE) ... \c"
+				@ar -rc $(NAME) $(OBJ)
+				@ranlib $(NAME)
+				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
+				@read -rsn1 -p "Press any key to continue"; echo
 
-# House Keeping — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
+debug:			$(OBJ) $(NAME) main.c
+				@echo "Creating Binary File $(_YELLOW)$@$(_WHITE) ... \c"
+				@$(CC) $(CFLAGS) $(IFLAGS) main.c -o debug $(LFLAGS) -L . -l LGL
+				@echo "$(_GREEN)DONE$(_WHITE)\n"
+				@echo "Execution !\n-----"
+				@./debug
 
-DEL = /bin/rm -rf
+norme:
+				norminette $(SRC_DIR)
+
+re:				fclean all
 
 clean:
-	@$(DEL) $(shell find . -name '*.o')
+				@echo "$(_WHITE)Deleting Objects Directory $(_YELLOW)$(OBJ_DIR)$(_WHITE) ... \c"
+				@$(foreach file, $(OBJ), rm -rf $(file))
+				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
-fclean: clean
-	@$(DEL) $(NAME)
+fclean:			clean
+				@echo "Deleting Binary File $(_YELLOW)$(NAME)$(_WHITE) ... \c"
+				@rm -f $(NAME)
+				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
 
-re: fclean all bonus
-
-# Text Colorization — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
-
-GREEN = "\033[1;32m"
-WHITE = "\033[1;37m"
-
-# — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —
-
-.PHONY: all bonus clean fclean re
+.PHONY: all clean flcean re show exec norme
