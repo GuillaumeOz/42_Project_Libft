@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2020/01/08 13:22:52 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/01/08 14:57:32 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC =		gcc
 
 SRC_DIR = 	$(shell find srcs -type d)
 INC_DIR = 	$(shell find includes -type d)
-LIB_DIR =
+# LIB_DIR =
 OBJ_DIR = 	obj
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
@@ -29,7 +29,7 @@ OBJ2 = $(OBJ1:%.m=%.o)
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 
 #Compilation flag
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir))
 
@@ -74,14 +74,6 @@ $(NAME): 		$(OBJ) Makefile
 				@ar -rc $(NAME) $(OBJ)
 				@ranlib $(NAME)
 				@echo "$(_GREEN)DONE$(_WHITE)\n-----"
-				@read -rsn1 -p "Press any key to continue"; echo
-
-debug:			$(OBJ) $(NAME) main.c
-				@echo "Creating Binary File $(_YELLOW)$@$(_WHITE) ... \c"
-				@$(CC) $(CFLAGS) $(IFLAGS) main.c -o debug $(LFLAGS) -L . -l LGL
-				@echo "$(_GREEN)DONE$(_WHITE)\n"
-				@echo "Execution !\n-----"
-				@./debug
 
 norme:
 				norminette $(SRC_DIR)
