@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:45:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/08 13:09:34 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:49:26 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_format	parse_format(const char *format, va_list *args)
 		info.width = -info.width;
 	}
 	if (info.flags & ZERO && !(info.flags & MINUS))
-		if (info.precision == NONE || ft_ischarset(info.specifier, "cf%"))
+		if (info.precision == NONE || ft_ischar("cf%", info.specifier))
 			info.pad = '0';
 	return (info);
 }

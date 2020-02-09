@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 19:56:33 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/08 12:08:56 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:59:58 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int8_t		parse_length(const char *format, int8_t *i)
 
 int8_t		parse_specifier(const char *format, int8_t *i)
 {
-	if (ft_ischarset(format[*i], SPECIFIERS))
+	if (ft_ischar(SPECIFIERS, format[*i]))
 	{
 		(*i)++;
 		return (format[(*i) - 1]);

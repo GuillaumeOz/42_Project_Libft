@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/08 13:24:49 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/03 13:18:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # define NONE -1
 
 # define FAILURE -1
-# define SUCCESS 0
+# define SUCCESS 1
 
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 20
 
 typedef struct	s_list
 {
@@ -41,7 +41,6 @@ typedef struct	s_list
 size_t			ft_strlen(const char *s);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
-char			*ft_strdup(const char *s);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
@@ -125,10 +124,14 @@ char			*ft_strrev(char *str);
 char			*ft_strpbrk (const char *s, const char *accept);
 size_t			ft_strcspn(const char *s, const char *reject);
 
-int				ft_ischarset(int c, const char *separators);
+int				ft_ischar(const char *format, int c);
+int				ft_isonlycharset(const char *format, const char *charset);
+int 			ft_isnotonlycharset(const char *format, const char *charset);
 
 char			*ft_strndupfree(const char *src, size_t n, int free_src);
 char			*ft_strndup(const char *src, size_t n);
+char			*ft_strdupfree(char *src, int free_src);
+char			*ft_strdup(const char *src);
 
 size_t			ft_strnlen(const char *s, size_t maxlen);
 

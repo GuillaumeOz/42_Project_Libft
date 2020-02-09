@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_ischar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 17:24:30 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/28 12:46:27 by gozsertt         ###   ########.fr       */
+/*   Created: 2019/08/26 16:02:49 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/01/24 16:09:21 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int	ft_ischar(const char *charset, int c)
 {
-	unsigned char	*ptr;
-
-	ptr = NULL;
-	if (size)
+	while (*charset)
 	{
-		if (!(ptr = (unsigned char*)malloc(sizeof(char) * size)))
-			return (NULL);
-		ft_memset(ptr, 0, size);
+		if (*charset == c)
+			return (SUCCESS);
+		charset++;
 	}
-	return ((void*)ptr);
+	return (FAILURE);
 }

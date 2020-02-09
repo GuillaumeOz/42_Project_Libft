@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ischarset.c                                     :+:      :+:    :+:   */
+/*   ft_strdupfree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/26 16:02:49 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/08/26 16:21:21 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/01/09 17:55:38 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/01/10 14:55:45 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_ischarset(int c, const char *charset)
+char	*ft_strdupfree(char *src, int free_src)
 {
-	while (*charset)
-	{
-		if (*charset == c)
-			return (1);
-		charset++;
-	}
-	return (0);
+	char	*ret;
+
+	ret = ft_strdup(src);
+	if (free_src && src)
+		free((void *)src);
+	return (ret);
 }
