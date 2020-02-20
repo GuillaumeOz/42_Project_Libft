@@ -6,7 +6,7 @@
 #    By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 15:28:16 by gozsertt          #+#    #+#              #
-#    Updated: 2020/02/09 13:09:47 by gozsertt         ###   ########.fr        #
+#    Updated: 2020/02/20 13:54:02 by gozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir))
 
-LFLAGS = $(foreach dir, $(LIB_DIR), -L $(dir) ) $(foreach lib, $(LIB), -l $(lib) ) $(foreach framework, $(FRAMEWORK), -framework $(framework) )
-
+LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
+				$(foreach lib, $(LIB), -l $(lib))
 # Colors
 
 _GREY=	$'\x1b[30m

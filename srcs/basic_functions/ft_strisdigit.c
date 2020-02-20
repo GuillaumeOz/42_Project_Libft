@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/20 20:32:52 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/13 18:06:31 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 15:18:01 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/20 13:59:37 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+bool	ft_strisdigit(char *str)
 {
-	if (!lst)
-		return ;
-	del((lst)->content);
-	free(lst);
-	lst = NULL;
-	return ;
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((ft_isdigit(str[i] + '0') == 0))
+			return (false);
+		i++;
+	}
+	return (true);
 }

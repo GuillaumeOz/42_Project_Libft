@@ -6,12 +6,18 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 12:49:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/07 15:49:47 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:57:57 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+typedef	struct	s_ft_printf_vector2
+{
+	float	x;
+	float	y;
+}				t_ft_printf_vector2;
 
 typedef union	u_data
 {
@@ -27,6 +33,7 @@ typedef union	u_data
 	unsigned int		uint_;
 	unsigned long		ulong_;
 	unsigned long long	ulong_long_;
+	float				float_;
 	double				double_;
 	long double			long_double_;
 	intmax_t			intmax_;
@@ -35,6 +42,7 @@ typedef union	u_data
 	uintptr_t			uintptr_;
 	ptrdiff_t			ptrdiff_;
 	size_t				size_;
+	t_ft_printf_vector2	vector2_;
 }				t_data;
 
 typedef struct	s_format_info
@@ -111,5 +119,6 @@ char			*o_handler(t_format format, t_data arg);
 char			*u_handler(t_format format, t_data arg);
 char			*x_handler(t_format format, t_data arg);
 char			*xx_handler(t_format format, t_data arg);
+char			*v_handler(t_format format, t_data arg);
 
 #endif

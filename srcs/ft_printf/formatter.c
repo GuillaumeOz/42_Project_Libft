@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:45:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/28 17:49:26 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:03:15 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_handler g_tbl_printf[] =
 	{ 'u', &u_handler },
 	{ 'x', &x_handler },
 	{ 'X', &xx_handler },
+	{ 'v', &v_handler },
 	{ '\0', NULL }
 };
 
@@ -51,6 +52,10 @@ t_data		extract_argument(t_format format, va_list *args)
 		format.specifier == 'c')
 	{
 		arg.intmax_ = va_arg(*args, intmax_t);
+	}
+	else if (format.specifier == 'v')
+	{
+		arg.vector2_ = va_arg(*args, t_ft_printf_vector2);
 	}
 	else
 	{

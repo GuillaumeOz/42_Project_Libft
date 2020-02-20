@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 17:16:43 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 16:38:33 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 19:52:51 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/17 19:54:44 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	*ft_strcut(char **s1, char delim)
 {
-	t_list *head;
-	t_list *node;
+	char	*tmp;
+	char	*result;
+	size_t	len;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(node = ft_lstnew(f(lst->content))))
-		return (NULL);
-	head = node;
-	while (lst->next)
-	{
-		lst = lst->next;
-		if (!(node->next = ft_lstnew(f(lst->content))))
-		{
-			ft_lstclear(&head, del);
-			return (NULL);
-		}
-		node = node->next;
-	}
-	return (head);
+	tmp = *s1;
+	len = 0;
+	while (tmp[len] != '\0' && tmp[len] != delim)
+		len++;
+	result = ft_strnew(len);
+	ft_strncat(result, tmp, len);
+	*s1 = ft_strnew(ft_strlen(tmp) - len + 2);
+	ft_strcat(*s1, &(tmp[len + 1]));
+	free(tmp);
+	return (result);
 }

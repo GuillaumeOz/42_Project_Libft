@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_tab_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 16:13:35 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 12:51:49 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 14:53:22 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/17 14:53:33 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **alst, t_list *new)
+int			ft_tab_len(char **tab)
 {
-	if (!alst || !new)
-		return ;
-	new->next = *alst;
-	*alst = new;
-	return ;
+	int		i;
+
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+	return (i);
 }

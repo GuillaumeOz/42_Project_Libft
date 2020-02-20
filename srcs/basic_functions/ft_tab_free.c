@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_tab_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 12:34:45 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 17:20:17 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/17 15:36:14 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/17 15:36:16 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_tab_free(char **tab)
 {
-	t_list *tmp;
+	int	i;
 
-	if (!lst || !del)
-		return ;
-	tmp = (*lst);
-	while (tmp)
+	i = 0;
+	while (tab[i] != NULL)
 	{
-		tmp = tmp->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
+		free(tab[i]);
+		i++;
 	}
-	return ;
+	free(tab);
 }

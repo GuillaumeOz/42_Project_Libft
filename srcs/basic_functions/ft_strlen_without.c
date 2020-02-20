@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strlen_without.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 16:48:05 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 16:24:19 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/20 14:27:17 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/20 14:33:18 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+size_t	ft_strlen_without(const char *str, char c)
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
+	size_t	i;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		f((void *)lst->content);
-		lst = lst->next;
+		if (str[i] != c)
+			count++;
+		i++;
 	}
-	return ;
+	return (count);
 }

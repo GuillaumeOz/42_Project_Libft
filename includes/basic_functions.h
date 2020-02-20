@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/03 13:18:16 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:13:55 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,8 @@
 
 # define BUFFER_SIZE 20
 
-typedef struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
 size_t			ft_strlen(const char *s);
+size_t			ft_strlen_without(const char *str, char c);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isalpha(int c);
@@ -89,6 +84,7 @@ char			*ft_strprepend(const char *s1, const char *s2,
 				int free_s1, int free_s2);
 
 char			*ft_strtrim(char const *s1, char const *set);
+char			*ft_strcut(char **s1, char delim);
 char			**ft_split(char const *s, char c);
 
 int				ft_valid_base(char *base_str);
@@ -105,18 +101,13 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
-t_list			*ft_lstnew(void *content);
-void			ft_lstdelone(t_list *lst, void (*del)(void*));
-void			ft_lstclear(t_list **lst, void (*del)(void*));
-void			ft_lstadd_front(t_list **alst, t_list *lnew);
-void			ft_lstadd_back(t_list **alst, t_list *lnew);
-t_list			*ft_lstlast(t_list *lst);
-void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-				void (*del)(void *));
-
 size_t			ft_intlen(intmax_t nb);
 size_t			ft_seglen(const char *s, size_t start, int c);
+int				ft_tab_len(char **tab);
+
+void			ft_tab_free(char **tab);
+
+bool			ft_strisdigit(char *str);
 
 size_t			ft_count_elems(char const *s, int c);
 int				ft_is_white_space(char c);
@@ -131,6 +122,7 @@ int 			ft_isnotonlycharset(const char *format, const char *charset);
 char			*ft_strndupfree(const char *src, size_t n, int free_src);
 char			*ft_strndup(const char *src, size_t n);
 char			*ft_strdupfree(char *src, int free_src);
+char			*ft_strdup_no_c(const char *s, char c);
 char			*ft_strdup(const char *src);
 
 size_t			ft_strnlen(const char *s, size_t maxlen);

@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:54:42 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/18 19:15:28 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:23:06 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 	{
-		output = ft_strdup("-2147483648\0");
+		output = ft_strdup("-2147483648");
 		return (output);
 	}
 	nb_len = (int)ft_intlen(n);

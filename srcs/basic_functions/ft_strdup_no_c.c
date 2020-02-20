@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strdup_no_c.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 13:21:36 by gozsertt          #+#    #+#             */
-/*   Updated: 2019/11/20 12:58:08 by gozsertt         ###   ########.fr       */
+/*   Created: 2020/02/20 14:22:38 by gozsertt          #+#    #+#             */
+/*   Updated: 2020/02/20 15:14:10 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+char	*ft_strdup_no_c(const char *s, char c)
 {
-	while (lst && lst->next)
-		lst = lst->next;
-	return (lst);
+	char	*str;
+	int		i;
+	int		j;
+	size_t	size;
+
+	size = ft_strlen_without(s, c);
+	i = 0;
+	j = 0;
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (size + SENTINAL))))
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	return (str);
 }
