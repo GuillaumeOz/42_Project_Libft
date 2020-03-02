@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/20 15:13:55 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:36:40 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define BUFFER_SIZE 20
 
+void			ft_error(char *error_msg);
 size_t			ft_strlen(const char *s);
 size_t			ft_strlen_without(const char *str, char c);
 int				ft_strcmp(const char *s1, const char *s2);
@@ -84,8 +85,10 @@ char			*ft_strprepend(const char *s1, const char *s2,
 				int free_s1, int free_s2);
 
 char			*ft_strtrim(char const *s1, char const *set);
-char			*ft_strcut(char **s1, char delim);
 char			**ft_split(char const *s, char c);
+
+char			*ft_strcut_free(char **s1, char delim, int to_free);
+char			*ft_strcut(char **s1, char delim);
 
 int				ft_valid_base(char *base_str);
 size_t			ft_uintmaxlen_base(uintmax_t n, unsigned int base);
