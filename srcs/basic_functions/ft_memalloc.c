@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 17:24:30 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/28 12:46:27 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/04/09 10:30:02 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memalloc(size_t size)
 	if (size)
 	{
 		if (!(ptr = (unsigned char*)malloc(sizeof(char) * size)))
-			return (NULL);
+			ft_error("The malloc from ft_memalloc failed");
 		ft_memset(ptr, 0, size);
 	}
 	return ((void*)ptr);

@@ -6,19 +6,11 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:45:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 23:17:17 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/03 20:24:00 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char		*apply_width(t_format format, char *str)
-{
-	return (
-		(format.flags & MINUS) ?
-			ft_strappend(str, ft_padding(format.width, format.pad), 1, 1) :
-			ft_strprepend(str, ft_padding(format.width, format.pad), 1, 1));
-}
 
 t_handler g_tbl_printf[] =
 {
@@ -35,6 +27,14 @@ t_handler g_tbl_printf[] =
 	{ 'v', &v_handler },
 	{ '\0', NULL }
 };
+
+char		*apply_width(t_format format, char *str)
+{
+	return (
+		(format.flags & MINUS) ?
+			ft_strappend(str, ft_padding(format.width, format.pad), 1, 1) :
+			ft_strprepend(str, ft_padding(format.width, format.pad), 1, 1));
+}
 
 t_data		extract_argument(t_format format, va_list *args)
 {
@@ -138,6 +138,6 @@ char		*formatter(const char **format, va_list *args, size_t *len)
 	}
 	(*format) += info.format_length + 1;
 	(*len) = (info.specifier == 'c' && arg.char_ == 0) ?
-		1 + info.width - (info.width > 0) : ft_strlen(fstr);
+		(size_t)(1 + info.width - (info.width > 0)) : ft_strlen(fstr);
 	return (fstr);
 }

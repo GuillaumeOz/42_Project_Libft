@@ -25,7 +25,6 @@ char	*o_handler(t_format format, t_data arg)
 	if (!(format.precision == 0 && temp == 0 && !(format.flags & HASH)))
 	{
 		format.precision -= (format.flags & HASH && temp) ? 1 : 0;
-		temp = (temp < 0) ? ~temp + 1 : temp;
 		intstr = ft_strjoinfre(
 			intstr, ft_utoa_base(temp, OCTAL_BASE, format.precision), 1, 1);
 		format.width -= ft_strlen(intstr);

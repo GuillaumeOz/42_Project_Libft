@@ -37,14 +37,14 @@ LFLAGS		=	$(foreach dir, $(LIB_DIR), -L $(dir)) \
 				$(foreach lib, $(LIB), -l $(lib))
 # Colors
 
-_GREY=	$'\x1b[30m
-_RED=	$'\x1b[31m
-_GREEN=	$'\x1b[32m
-_YELLOW=$'\x1b[33m
-_BLUE=	$'\x1b[34m
-_PURPLE=$'\x1b[35m
-_CYAN=	$'\x1b[36m
-_WHITE=	$'\x1b[37m
+_GREY=	$'\e[30m
+_RED=	$'\e[31m
+_GREEN=	$'\e[32m
+_YELLOW=$'\e[33m
+_BLUE=	$'\e[34m
+_PURPLE=$'\e[35m
+_CYAN=	$'\e[36m
+_WHITE=	$'\e[37m
 
 all:
 				@echo "\n$(_BLUE)___$(NAME) Setting___\n$(_WHITE)"

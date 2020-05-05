@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 10:05:04 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 23:18:06 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 12:39:30 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ char	*v_handler(t_format format, t_data arg)
 	tmp = ft_itoa((int)value.y);
 	vecstr = ft_strappend(vecstr, tmp, 1, 1);
 	vecstr = ft_strappend(vecstr, ")", 1, 0);
-	return	(vecstr);
+	return (vecstr);
 }

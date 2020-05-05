@@ -15,7 +15,6 @@
 int	ft_isonlycharset(const char *format, const char *charset)
 {
 	int i;
-	int j;
 	int ascii[256];
 	int set_zero;
 
@@ -29,7 +28,6 @@ int	ft_isonlycharset(const char *format, const char *charset)
 		if (ascii[(int)charset[i]] == 0)
 			ascii[(int)charset[i]] = 1;
 	i = 0;
-	j = 0;
 	while (format[i])
 	{
 		if (ascii[(int)format[i]] != 1)

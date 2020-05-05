@@ -24,7 +24,6 @@ char	*xx_handler(t_format format, t_data arg)
 	intstr = ft_strdup("");
 	if (!(format.precision == 0 && temp == 0))
 	{
-		temp = (temp < 0) ? ~(-temp) + 1 : temp;
 		intstr = ft_strjoinfre(intstr,
 			ft_utoa_base(temp, HEX_UPPER_BASE, format.precision), 1, 1);
 		format.width -= ft_strlen(intstr) +

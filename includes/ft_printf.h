@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 12:49:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/02/24 23:18:05 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/03/02 19:07:43 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int32_t			parse_precision(const char *format, va_list *args, int8_t *i);
 int8_t			parse_length(const char *format, int8_t *i);
 int8_t			parse_specifier(const char *format, int8_t *i);
 
-# define SPECIFIERS "cspiuodxX%"
+# define SPECIFIERS "cspiuodxXv%"
 
 char			*style_handler(t_format format, char *fstr);
 char			*mod_handler(t_format format, t_data arg);

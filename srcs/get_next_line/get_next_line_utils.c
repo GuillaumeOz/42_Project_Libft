@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 12:40:03 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/01/08 15:21:00 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/05 12:49:31 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_gnl_vector	*gnl_vct_new(size_t size)
 {
 	t_gnl_vector	*vct;
-	size_t		i;
+	size_t			i;
 
 	size += 1;
 	if (!(vct = malloc(sizeof(t_gnl_vector))))
@@ -37,7 +37,7 @@ t_gnl_vector	*gnl_vct_new(size_t size)
 	return (vct);
 }
 
-int			gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
+int				gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
 {
 	char	*tmp;
 	size_t	i;
@@ -63,7 +63,7 @@ int			gnl_vct_extend(t_gnl_vector *vct, size_t expected_len)
 	return (SUCCESS);
 }
 
-int			gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
+int				gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
 {
 	unsigned long	i;
 	size_t			expected_len;
@@ -87,11 +87,10 @@ int			gnl_vct_appnstr(t_gnl_vector *vct, char *addens, size_t n)
 	return (SUCCESS);
 }
 
-int			gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
+int				gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 {
 	size_t	i;
 	size_t	j;
-	size_t	newlen;
 
 	if (vct == NULL || vct->str == NULL || idx >= vct->len)
 		return (SUCCESS);
@@ -99,7 +98,6 @@ int			gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 		n = vct->len - idx;
 	i = idx;
 	j = idx + n;
-	newlen = idx + 1;
 	while (j < vct->size)
 	{
 		vct->str[i] = vct->str[j];
@@ -110,7 +108,7 @@ int			gnl_vct_cutnfrom(t_gnl_vector *vct, size_t idx, size_t n)
 	return (SUCCESS);
 }
 
-int			gnl_strnchr_idx(char *s, char c, size_t n, int mode)
+int				gnl_strnchr_idx(char *s, char c, size_t n, int mode)
 {
 	size_t	i;
 
