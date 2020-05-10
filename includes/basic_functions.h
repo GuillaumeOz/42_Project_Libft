@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 11:30:46 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/05 12:51:46 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/09 14:39:23 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*ft_strprepend(const char *s1, const char *s2,
 				int free_s1, int free_s2);
 
 char	*ft_strtrim(char const *s1, char const *set);
-char	*ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
 
 char	*ft_strcut_free(char **s1, char delim, int to_free);
 char	*ft_strcut(char **s1, char delim);
@@ -143,5 +143,7 @@ char	*ft_itoa_base(long long int nbr, char *base);
 char	*ft_itoa_hexa(long long int nbr);
 char	*ft_itoa_octa(long long int nbr);
 char	*ft_itoa_unsigned_deci(unsigned int nbr);
+
+void	ft_get_leaks(char *prog_name, char *msg);
 
 #endif
