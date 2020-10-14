@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 12:49:14 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/03/02 19:07:43 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/10/14 18:26:56 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef union	u_data
 	unsigned long long	ulong_long_;
 	float				float_;
 	double				double_;
-	long double			long_double_;
 	intmax_t			intmax_;
 	uintmax_t			uintmax_;
 	intptr_t			intptr_;

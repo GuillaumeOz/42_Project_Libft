@@ -6,7 +6,7 @@
 /*   By: gozsertt <gozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 14:45:53 by gozsertt          #+#    #+#             */
-/*   Updated: 2020/05/06 13:03:30 by gozsertt         ###   ########.fr       */
+/*   Updated: 2020/05/10 20:23:20 by gozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_data		extract_argument(t_format format, va_list *args)
 
 	if (format.specifier == 'f' && format.length == LLL)
 	{
-		arg.long_double_ = va_arg(*args, long double);
+		arg.double_ = va_arg(*args, long double);
 	}
 	else if (format.specifier == 'f' && format.length == LL)
 	{
